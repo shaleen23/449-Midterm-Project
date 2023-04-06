@@ -3,8 +3,8 @@
 |     Members      |                 Email                 |
 | :--------------: | :-----------------------------------: |
 |  Shaleen Mathur  |   shaleenmathur26@csu.fullerton.edu   |
-|  Kirsten Ochoa   | josellhernandez1113@csu.fullerton.edu |
-|  Melanie Mach    |  santamariajulio64@csu.fullerton.edu  |
+|  Kirsten Ochoa   |   ochoakirsten@csu.fullerton.edu      | 
+|  Melanie Mach    |   Melaniemach@csu.fullerton.edu       |
 
 ## Details
 
