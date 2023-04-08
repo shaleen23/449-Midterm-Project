@@ -8,10 +8,13 @@ from datetime import timedelta
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 # CORS(app)
+
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
 app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
 app.config['UPLOAD_PATH'] = 'uploads'
+app.config['JWT_SECRET_KEY'] = 'super-secret'
+
 conn = pymysql.connect(
         host='localhost',
         user='root', 
