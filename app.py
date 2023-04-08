@@ -1,14 +1,17 @@
+import os
 from flask import Flask, render_template, request, redirect, url_for, session, abort
 import pymysql
 from flask_mysqldb import MySQL
 from flask_cors import CORS
 import re
 from datetime import timedelta
-
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 # CORS(app)
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
-
+app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
+app.config['UPLOAD_EXTENSIONS'] = ['.jpg', '.png', '.gif']
+app.config['UPLOAD_PATH'] = 'uploads'
 conn = pymysql.connect(
         host='localhost',
         user='root', 
@@ -17,9 +20,9 @@ conn = pymysql.connect(
 		cursorclass=pymysql.cursors.DictCursor
         )
 cur = conn.cursor()
-@app.errorhandler(404)
+@app.errorhandler(415)
 def page_not_found(e):
-	return render_template('404.html'), 404
+	return render_template('415.html'), 415
 
 @app.errorhandler(401)
 def unauthorized(e):
@@ -146,6 +149,22 @@ def admin():
 
 	else:
 		abort(401)
+
+
+
+@app.route('/', methods=['POST'])
+def upload_files():
+	uploaded_file = request.files['file']
+	filename = secure_filename(uploaded_file.filename)
+	if filename != '':
+		file_ext = os.path.splitext(filename)[1]
+	if file_ext not in app.config['UPLOAD_EXTENSIONS']:
+		abort(400)
+	uploaded_file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+	return redirect(url_for('index'))
+
+
+
 
 if __name__ == "__main__":
 	app.run(host ="localhost", port = int("5000"))
