@@ -34,9 +34,9 @@ conn = pymysql.connect(
 cur = conn.cursor()
 
 
-@app.errorhandler(404)
+@app.errorhandler(400)
 def page_not_found(e):
-	return render_template('404.html'), 404
+	return render_template('400.html'), 400
 
 @app.errorhandler(401)
 def unauthorized(e):
@@ -183,9 +183,7 @@ def upload_image():
 				print("File exceeded maximum size")
 				abort(400)
 			image = request.files["image"]
-			#print(image)    #terminal shows <FileStorage: 'image.jpg' ('image/svg+xml')>
 			filename = secure_filename(image.filename)
-			#print(image.filename)		#terminal shows the filename
 			if filename != "":
 				file_ext = os.path.splitext(filename)[1]
 				if file_ext not in app.config['ALLOWED_IMAGE_EXTENSIONS']:
@@ -197,7 +195,7 @@ def upload_image():
 				print("image must have a filename")
 				return redirect(request.url)
 	return render_template('upload_image.html')
-#23:09
+
 def allowed_image_filesize(filesize):
 	if int(filesize) <= app.config['MAX_IMAGE_FILESIZE']:
 		print("true")
