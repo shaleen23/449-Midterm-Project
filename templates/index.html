@@ -11,9 +11,10 @@
 				<h1>Side Bar</h1>
 				<ul>
 					<li class="active"><a href="{{url_for('index')}}">Index</a></li>
-					<li><a href="{{url_for('display')}}">Display</a></li>
-					<li><a href="{{url_for('update')}}">Update</a></li>
-					<li><a href="{{url_for('logout')}}">Log out</a></li>
+					<li><a href="{{url_for('upload')}}">Upload</a></li>
+					<li><a href="{{ url_for('display') }}">Display</a></li>
+					<li><a href="{{ url_for('update') }}">Update</a></li>
+					<li><a href="{{ url_for('logout') }}">Log out</a></li>
 				</ul>
 			</div>
 			<div class="content" align="center">
@@ -22,6 +23,7 @@
 				</div></br></br>
 				<div class="contentbar">
 					<div class="msg">{{ msg }}</div>
+					<p class="token">{{token}}</p>
 				</div>
 				
 			</div>

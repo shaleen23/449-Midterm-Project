@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+        <title>public</title>
+        <link rel="stylesheet" href="../static/style.css">
+    </head>
+    <body bgcolor="#e6ffee">
+        <div class="one">
+            <div class="content" align="center">
+                <div class="topbar">
+                    <h2>Welcome!! This is a Public Page!! </h2>                      
+                </div>  </br>
+                <div class="contentbar">
+                    <h1>This is open information...</h1>    </br>
+                     {% block content %}
+                        <div class="border">
+                            <table class="worddark"></br></br></br></br>
+                                <tr>
+                                    <td>List:</td>
+                                    <td>{{all_accounts}}</td>
+                                </tr>
+                
+                            </table>
+                        </div>
+                    {% endblock %}                                          
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

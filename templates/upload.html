@@ -1,18 +1,55 @@
-<!DOCTYPE html>
+
+<!--Store this code in 'upload-image.html' file inside the 'templates' folder-->
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Upload File</title>
-  </head>
-  <body>
-    <form
-      action="http://localhost:5000/uploader"
-      method="POST"
-      enctype="multipart/form-data"
-    >
-      <input type="file" name="file" />
-      <input type="submit" />
-  </body>
+	<head>
+		<title>index</title>
+		<link rel="stylesheet" href="../static/style.css">
+	</head>
+
+	<body bgcolor="#e6ffee">
+		<div class="one">
+			<div class="two">
+				<h1>Side Bar</h1>
+				<ul>
+					<li><a href="{{url_for('index')}}">Index</a></li>
+                    <li class="active"><a href="{{url_for('upload')}}">Upload</a></li>
+                    <li><a href="{{ url_for('display') }}">Display</a></li>
+					<li><a href="{{ url_for('update') }}">Update</a></li>
+					<li><a href="{{ url_for('logout') }}">Log out</a></li>
+				</ul>
+			</div>
+			<div class="content" align="center">
+				<div class="topbar">
+					<h2>Welcome!! You are in Upload Page!! </h2>
+                    <form action = "/upload" method = "POST" enctype = "multipart/form-data">
+                        <div class = "form group">
+                            <label>Select image </label>
+                            <div class = "custom-file">    
+                                <input oninput= "filesize(this);" type = "file" class = "custom-file-input" name = "image" id = "image">
+                                <label class = "custom-file-label" for = "image"> Select image...</label>
+                            </div>
+                        </div>
+                        <button type = "submit" class = "btn btn-primary">Upload image </button>
+                    </form>					
+				</div></br></br>
+			</div>
+		</div>
+        {%block content%}
+        {%block script%}
+        <script>
+            function filesize(elem)
+            {
+                var file = elem.files[0];
+                var size = file.size;
+                document.cookie = `filesize=${size}`
+                if(size > 10000000)
+                {
+                    alert("File size is greater than 10MB");
+                    elem.value = "";
+                }
+            }
+        </script>
+        {%endblock script%}
+        {%endblock content%}
+	</body>
 </html>
