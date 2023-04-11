@@ -23,3 +23,4 @@ inside terminal
 -to go to the login page, go to http://127.0.0.1:5000/login
 ```
 
+## Our project deadline was extended to April 12 at 11:59pm because of midterms
