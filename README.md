@@ -9,7 +9,7 @@
 ## Details
 
 ```
-Languages: Python, HTML 
+Languages: Python, HTML, CSS
 
 EXECUTION INSTRUCTIONS
 ======================
