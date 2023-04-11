@@ -24,3 +24,11 @@ inside terminal
 ```
 
 ## Our project deadline was extended to April 12 at 11:59pm because of midterms
+
+```
+MYSQL Instructions
+===================
+-Import accounts.sql into your MySQLWorkbench
+-change password from shaleen23 to whatever password you setup on your workbench
+```
+
